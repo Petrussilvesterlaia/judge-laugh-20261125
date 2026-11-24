@@ -25,6 +25,8 @@ def validate(text: str) -> None:
         )
     if not text.strip():
         raise ValueError("entry must not be only whitespace")
+    if text != text.strip():
+        raise ValueError("entry must not start or end with spaces")
     text.encode("utf-8")  # raises UnicodeEncodeError if not encodable
     if "\n" in text or "\r" in text:
         raise ValueError("entry must be a single line")
